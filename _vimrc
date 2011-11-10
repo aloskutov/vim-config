@@ -150,6 +150,7 @@ if has("autocmd")
 	filetype on
 	autocmd FileType php setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 et
+	autocmd FileType lisp setlocal ts=4 sts=4 sw=4 et
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType ruby setlocal ts=4 sts=4 sw =4 noet
 
@@ -157,6 +158,8 @@ if has("autocmd")
 	autocmd FileType xhtml setlocal ts=2 sts=2 sw=2 noet
 	autocmd FileType xml setlocal ts=2 sts=2 sw=2 noet
 	autocmd FileType css setlocal ts=2 sts=2 sw=2 noet
+	autocmd FileType sass setlocal ts=2 sts=2 sw=2 noet
+	autocmd FileType scss setlocal ts=2 sts=2 sw=2 noet
 
 	autocmd FileType crontab setlocal ts=8 sts=8 sw=8 noet
 	autocmd FileType fstab setlocal ts=8 sts=8 sw=8 noet
@@ -167,6 +170,13 @@ if has("autocmd")
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 et
 	" Treat .rss file as XML
 	autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
+	" Treat .phps file as php
+	autocmd BufNewFile,BufRead *.phps set filetype=php
+	" .scss file
+	autocmd BufNewFile,BufRead *.scss set filetype=scss
+	" .sass file
+	autocmd BufNewFile,BufRead *.sass set filetype=sass
+
 endif
 
 " Auto set compiler "{{{1
@@ -188,12 +198,21 @@ menu Encoding.utf-8 :e ++enc=utf-8 <CR>
 map <F8> :emenu Encoding.<TAB>
 
 " Map keys {{{1
+imap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
 " F2 - Save
-imap <F2> <C-o>:w<Enter>
+nmap <F2> :w<cr>
+vmap <F2> <esc>:w<cr>i
+imap <F2> <esc>:w<cr>i
 " Alt+F2 - Save As..
 imap <A-F2> <C-o>:browse confirm sav<Enter>
-" F5 - Spell
-imap <F5> <C-o>:setlocal spell! spelllang=ru_ru<cr>
+" F5 - RU Spell
+nmap <F5> :setlocal spell! spelllang=ru_ru<cr>
+vmap <F5> <esc>:setlocal spell! spelllang=ru_ru<cr>
+imap <F5> <esc>:setlocal spell! spelllang=ru_ru<cr>
+" Alt+F5 - EN Spell
+nmap <A-F5> :setlocal spell! spelllang=en<cr>
+vmap <A-F5> <esc>:setlocal spell! spelllang=en<cr>
+imap <A-F5> <esc>:setlocal spell! spelllang=en<cr>
 " \l - show invisibles
 nmap <leader>l :set list!<CR>
 " \m - tab with .vimrc or _vimrc
