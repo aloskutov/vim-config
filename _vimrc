@@ -38,9 +38,9 @@ if has("unix")
 endif
 if has("win32")
 	" Указываем каталог для backup'ов
-	set backupdir=$VIM\vimfiles\backup
+	set backupdir=~\vimfiles\backup
 	" Указываем каталог для swap файла
-	set directory=$VIM\vimfiles\temp
+	set directory=~\vimfiles\swap
 endif
 
 " Функции специфические для GUI {{{1
@@ -56,16 +56,12 @@ if has("gui_running")
 	set ru
 	if has("gui_win32")
 		"Устанавливаем шрифт и его размер
-		"set gfn=Courier_New_Cyr:h10
-		"set gfn=DejaVu_Sans_Mono:h10
-		set gfn=Consolas:h10
+		"set gfn=Courier_New_Cyr:h10:cRUSSIAN
+		"set gfn=DejaVu_Sans_Mono:h10:cRUSSIAN
+		set gfn=Consolas:h10:cRUSSIAN
 	endif
 	" Устанавливаем цветовую схему
 	colorscheme mustang
-	" Указываем каталог для backup'ов
-	set backupdir=$VIM\vimfiles\backup
-	" Указываем каталог для swap файла
-	set directory=$VIM\vimfiles\temp
 endif
 
 " Функции спецические для консоли {{{1
