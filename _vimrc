@@ -3,70 +3,70 @@
 set statusline=%t\ %y%m%r[%{&fileencoding}]%<[%{strftime(\"%d.%m.%y\",getftime(expand(\"%:p\")))}]%k%=%-14.(%l,%c%V%)\ %P
 
 set nocompatible
-" Отключаем перенос строк
+" РћС‚РєР»СЋС‡Р°РµРј РїРµСЂРµРЅРѕСЃ СЃС‚СЂРѕРє
 set nowrap
-" Включаем вывод в заголовке окна имя редактируемого файла
+" Р’РєР»СЋС‡Р°РµРј РІС‹РІРѕРґ РІ Р·Р°РіРѕР»РѕРІРєРµ РѕРєРЅР° РёРјСЏ СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ С„Р°Р№Р»Р°
 set title
-" Включаем автоотступы
+" Р’РєР»СЋС‡Р°РµРј Р°РІС‚РѕРѕС‚СЃС‚СѓРїС‹
 set ai
 set si
-" Включаем нумерацию строк
+" Р’РєР»СЋС‡Р°РµРј РЅСѓРјРµСЂР°С†РёСЋ СЃС‚СЂРѕРє
 set nu
-" Настраиваем отображения скрытых символов, при включении их отображения:
-" tab - два символа для отображения табуляции (первый символ и заполнитель)
-" eol - символ для отображения конца строки
-" precedes - индикатор продолжения строки в лево
-" extends - индикатор продолжения строки в право
-set listchars=tab:>·,trail:·,eol:¬,precedes:«,extends:»
-" Настраиваем отображение символа переноса строки, при включении переноса
-" строки
-set showbreak=…
+" РќР°СЃС‚СЂР°РёРІР°РµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃРєСЂС‹С‚С‹С… СЃРёРјРІРѕР»РѕРІ, РїСЂРё РІРєР»СЋС‡РµРЅРёРё РёС… РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ:
+" tab - РґРІР° СЃРёРјРІРѕР»Р° РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚Р°Р±СѓР»СЏС†РёРё (РїРµСЂРІС‹Р№ СЃРёРјРІРѕР» Рё Р·Р°РїРѕР»РЅРёС‚РµР»СЊ)
+" eol - СЃРёРјРІРѕР» РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєРѕРЅС†Р° СЃС‚СЂРѕРєРё
+" precedes - РёРЅРґРёРєР°С‚РѕСЂ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ СЃС‚СЂРѕРєРё РІ Р»РµРІРѕ
+" extends - РёРЅРґРёРєР°С‚РѕСЂ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ СЃС‚СЂРѕРєРё РІ РїСЂР°РІРѕ
+set listchars=tab:>В·,trail:В·,eol:В¬,precedes:В«,extends:В»
+" РќР°СЃС‚СЂР°РёРІР°РµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРёРјРІРѕР»Р° РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРєРё, РїСЂРё РІРєР»СЋС‡РµРЅРёРё РїРµСЂРµРЅРѕСЃР°
+" СЃС‚СЂРѕРєРё
+set showbreak=вЂ¦
 
-" Формат файлов 
+" Р¤РѕСЂРјР°С‚ С„Р°Р№Р»РѕРІ 
 set fileformats=dos,unix
-" Кодировки файлов
+" РљРѕРґРёСЂРѕРІРєРё С„Р°Р№Р»РѕРІ
 set fileencodings=utf-8,cp1251,koi8-r,cp866
-" Включаем запись backup'ов
+" Р’РєР»СЋС‡Р°РµРј Р·Р°РїРёСЃСЊ backup'РѕРІ
 set backup writebackup
 
-" Каталоги бэкапов для unix и windows {{{1
+" РљР°С‚Р°Р»РѕРіРё Р±СЌРєР°РїРѕРІ РґР»СЏ unix Рё windows {{{1
 if has("unix")
-	" Указываем каталог для backup'ов
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ backup'РѕРІ
 	set backupdir=$HOME/.vim/backup
-	" Указываем каталог для swap файла
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ swap С„Р°Р№Р»Р°
 	set directory=$HOME/.vim/temp
 endif
 if has("win32")
-	" Указываем каталог для backup'ов
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ backup'РѕРІ
 	set backupdir=~\vimfiles\backup
-	" Указываем каталог для swap файла
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ swap С„Р°Р№Р»Р°
 	set directory=~\vimfiles\swap
 endif
 
-" Функции специфические для GUI {{{1
+" Р¤СѓРЅРєС†РёРё СЃРїРµС†РёС„РёС‡РµСЃРєРёРµ РґР»СЏ GUI {{{1
 if has("gui_running")
 	"set guioptions=mlrbT
-	" Включаем отображение:
+	" Р’РєР»СЋС‡Р°РµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ:
 	" m - (m)enu bar
 	" r - (r)ight-hand scrollbar
 	" b - (b)ottom scrollbar
 	" T - (T)oolbar
 	set guioptions=mrbT
-	" Отображаем ruler
+	" РћС‚РѕР±СЂР°Р¶Р°РµРј ruler
 	set ru
 	if has("gui_win32")
-		"Устанавливаем шрифт и его размер
+		"РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С€СЂРёС„С‚ Рё РµРіРѕ СЂР°Р·РјРµСЂ
 		"set gfn=Courier_New_Cyr:h10:cRUSSIAN
 		"set gfn=DejaVu_Sans_Mono:h10:cRUSSIAN
 		set gfn=Consolas:h10:cRUSSIAN
 	endif
-	" Устанавливаем цветовую схему
+	" РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С†РІРµС‚РѕРІСѓСЋ СЃС…РµРјСѓ
 	colorscheme mustang
 endif
 
-" Функции спецические для консоли {{{1
+" Р¤СѓРЅРєС†РёРё СЃРїРµС†РёС‡РµСЃРєРёРµ РґР»СЏ РєРѕРЅСЃРѕР»Рё {{{1
 if !has("gui_running")
-	" Устанавливаем цветовую схему
+	" РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С†РІРµС‚РѕРІСѓСЋ СЃС…РµРјСѓ
 	colorscheme torte
 endif
 
@@ -84,11 +84,11 @@ function! Chtml()
 		let s:str = substitute (s:str, "\&", '\&amp;', "g")	
 		let s:str = substitute (s:str, "\\(\\s\\)\\(--\\)\\(\\s\\)","\\1\\&mdash;\\3", "g")	
 		let s:str = substitute (s:str, "\"", '\&quot;', "g")
-		let s:str = substitute (s:str, "«", '\&laquo;', "g")
-		let s:str = substitute (s:str, "»", '\&raquo;', "g")
-		let s:str = substitute (s:str, "“", '\&ldquo;;', "g")
-		let s:str = substitute (s:str, "”", '\&rdquo;', "g")
-		let s:str = substitute (s:str, "„", '\&bdquo;', "g")
+		let s:str = substitute (s:str, "В«", '\&laquo;', "g")
+		let s:str = substitute (s:str, "В»", '\&raquo;', "g")
+		let s:str = substitute (s:str, "вЂњ", '\&ldquo;;', "g")
+		let s:str = substitute (s:str, "вЂќ", '\&rdquo;', "g")
+		let s:str = substitute (s:str, "вЂћ", '\&bdquo;', "g")
 		let s:str = substitute (s:str, "<", '\&lt;', "g")
 		let s:str = substitute (s:str, ">", '\&gt;', "g")
 		call setline(n,s:str)
@@ -101,9 +101,9 @@ let xml_tag_completion_map = "<C-l>"
 " Wrap function {{{1
 command! -nargs=* Wrap call Wrap()
 function! Wrap()
-	" Перенос слов
+	" РџРµСЂРµРЅРѕСЃ СЃР»РѕРІ
 	set wrap!
-	" Перенос по словам
+	" РџРµСЂРµРЅРѕСЃ РїРѕ СЃР»РѕРІР°Рј
 	set linebreak!
 endfunction
 
