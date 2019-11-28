@@ -2,9 +2,14 @@
 
 set statusline=%t\ %y%m%r[%{&fileencoding}]%<[%{strftime(\"%d.%m.%y\",getftime(expand(\"%:p\")))}]%k%=%-14.(%l,%c%V%)\ %P
 
+set laststatus=2
+
+" Шифруем используя Blowfish
+set cm=blowfish
+
 set nocompatible
 " Отключаем перенос строк
-set nowrap
+set wrap
 " Включаем вывод в заголовке окна имя редактируемого файла
 set title
 " Включаем автоотступы
@@ -25,22 +30,28 @@ set showbreak=…
 " Формат файлов 
 set fileformats=dos,unix
 " Кодировки файлов
-set fileencodings=utf-8,cp1251,koi8-r,cp866
+set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
 " Включаем запись backup'ов
 set backup writebackup
 
 " Каталоги бэкапов для unix и windows {{{1
+au BufWritePre * let &bex = '-' . strftime("%Y%m%d-%H%M%S") . '.vimbackup'
 if has("unix")
 	" Указываем каталог для backup'ов
 	set backupdir=$HOME/.vim/backup
 	" Указываем каталог для swap файла
-	set directory=$HOME/.vim/temp
+	set directory=$HOME/.vim/swap
+	" Указываем каталог для undo файла
+	set udir=$HOME/.vim/undo
 endif
+
 if has("win32")
 	" Указываем каталог для backup'ов
-	set backupdir=~\vimfiles\backup
+	set backupdir=~/vimfiles/backup//
 	" Указываем каталог для swap файла
-	set directory=~\vimfiles\swap
+	set directory=~/vimfiles/swap//
+	" Указываем каталог для undo файлов
+	set udir==~/vimfiles/undo//
 endif
 
 " Функции специфические для GUI {{{1
@@ -51,25 +62,19 @@ if has("gui_running")
 	" r - (r)ight-hand scrollbar
 	" b - (b)ottom scrollbar
 	" T - (T)oolbar
-	set guioptions=mrbT
+	set guioptions=mrb
 	" Отображаем ruler
 	set ru
+	colorscheme mustang
 	if has("gui_win32")
 		"Устанавливаем шрифт и его размер
 		"set gfn=Courier_New_Cyr:h10:cRUSSIAN
-		"set gfn=DejaVu_Sans_Mono:h10:cRUSSIAN
-		set gfn=Consolas:h10:cRUSSIAN
+		set gfn=DejaVu_Sans_Mono:h10:cRUSSIAN
+		"set gfn=Consolas:h9:cRUSSIAN
 	endif
-	" Устанавливаем цветовую схему
-	colorscheme mustang
+	else " Функции спецические для консоли
+	colorscheme default
 endif
-
-" Функции спецические для консоли {{{1
-if !has("gui_running")
-	" Устанавливаем цветовую схему
-	colorscheme torte
-endif
-
 
 :filetype plugin on
 
@@ -150,8 +155,9 @@ if has("autocmd")
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType ruby setlocal ts=4 sts=4 sw =4 noet
 
-	autocmd FileType html setlocal ts=2 sts=2 sw=2 noet
-	autocmd FileType xhtml setlocal ts=2 sts=2 sw=2 noet
+	autocmd FileType html setlocal ts=4 sts=4 sw=4 noet
+	autocmd FileType xhtml setlocal ts=4 sts=4 sw=4 noet
+	autocmd FileType ant setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType xml setlocal ts=2 sts=2 sw=2 noet
 	autocmd FileType css setlocal ts=2 sts=2 sw=2 noet
 	autocmd FileType sass setlocal ts=2 sts=2 sw=2 noet
@@ -172,7 +178,6 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.scss set filetype=scss
 	" .sass file
 	autocmd BufNewFile,BufRead *.sass set filetype=sass
-
 endif
 
 " Auto set compiler "{{{1
@@ -191,6 +196,7 @@ menu Encoding.koi8-r :e ++enc=koi8-r<CR>
 menu Encoding.windows-1251 :e ++enc=cp1251<CR>
 menu Encoding.dos :e ++enc=ibm866<CR>
 menu Encoding.utf-8 :e ++enc=utf-8 <CR>
+menu Encoding.utf-16le :e ++enc=utf-16le <CR>
 map <F8> :emenu Encoding.<TAB>
 
 " Map keys {{{1
@@ -215,7 +221,8 @@ nmap <leader>l :set list!<CR>
 nmap <leader>m :tabedit $MYVIMRC<CR>
 " \w - set wrap
 nmap <leader>w :set wrap!<CR>
-
+" \z - set Zend Coding Standards & retab
+nmap <leader>z :set ts=4 sw=4 et<CR>:retab<CR>:set ff=unix<CR>
 " Other {{{1
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
