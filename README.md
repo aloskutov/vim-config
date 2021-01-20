@@ -1,18 +1,27 @@
 # _vimrc #
 Файл конфигурации для windows, хотя можно и под иксами в линуксе. Особой разницы между конфигами нет, но линуксовый по-легче.
 
+## Установка ##
+Скачиваем в %USERPROFILE%:
+```sh
+wget https://raw.githubusercontent.com/aloskutov/vim-config/master/_vimrc
+```
+или curl'ом
+```sh
+curl -O https://raw.githubusercontent.com/aloskutov/vim-config/master/_vimrc
+```
+
 # .vimrc #
 Файл конфигурации vim для консоли линукс. Относительно легковесный, лишнее всегда можно убрать.
 
 ## Установка ##
 Устанавливается просто - сливается в домашнюю директорию и готово:
-
 ```sh
-wget https://raw.githubusercontent.com/aloskutov/vim/master/.vimrc
+wget https://raw.githubusercontent.com/aloskutov/vim-config/master/.vimrc
 ```
 или curl'ом
 ```sh
-curl -O https://raw.githubusercontent.com/aloskutov/vim/master/.vimrc
+curl -O https://raw.githubusercontent.com/aloskutov/vim-config/master/.vimrc
 ```
 
 ## О Конфиге ##
