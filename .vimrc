@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
 Plug 'dikiaap/minimalist'
-Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
 Plug 'mattn/emmet-vim'
 Plug 'itchyny/lightline.vim'
