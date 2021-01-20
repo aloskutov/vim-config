@@ -3,8 +3,8 @@
 " Install vim-plug
 " - Windows PowerShell:
 " iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim ni $HOME/vimfiles/autoload/plug.vim -Force
-" - Unix: 
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
+" - Unix:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 call plug#begin('~/vimfiles/plugged')
 	Plug 'dikiaap/minimalist'
@@ -18,38 +18,38 @@ set statusline=%t\ %y%m%r[%{&fileencoding}]%<[%{strftime(\"%d.%m.%y\",getftime(e
 set laststatus=2
 let python_highlight_all=1
 
-" Шифруем используя Blowfish
+" РЁРёС„СЂСѓРµРј РёСЃРїРѕР»СЊР·СѓСЏ Blowfish
 set cm=blowfish
 
 set nocompatible
-" Отключаем перенос строк
+" РћС‚РєР»СЋС‡Р°РµРј РїРµСЂРµРЅРѕСЃ СЃС‚СЂРѕРє
 set wrap
-" Включаем вывод в заголовке окна имя редактируемого файла
+" Р’РєР»СЋС‡Р°РµРј РІС‹РІРѕРґ РІ Р·Р°РіРѕР»РѕРІРєРµ РѕРєРЅР° РёРјСЏ СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ С„Р°Р№Р»Р°
 set title
-" Включаем автоотступы
+" Р’РєР»СЋС‡Р°РµРј Р°РІС‚РѕРѕС‚СЃС‚СѓРїС‹
 set ai
 set si
-" Включаем нумерацию строк :set numbers
-set nu		
-" Включаем относительную нумерацию строк :set relativenumber
-set rnu		
-" Включаем рулер
+" Р’РєР»СЋС‡Р°РµРј РЅСѓРјРµСЂР°С†РёСЋ СЃС‚СЂРѕРє :set numbers
+set nu
+" Р’РєР»СЋС‡Р°РµРј РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅСѓСЋ РЅСѓРјРµСЂР°С†РёСЋ СЃС‚СЂРѕРє :set relativenumber
+set rnu
+" Р’РєР»СЋС‡Р°РµРј СЂСѓР»РµСЂ
 set ru
-" Настраиваем отображения скрытых символов, при включении их отображения:
-" tab - два символа для отображения табуляции (первый символ и заполнитель)
-" eol - символ для отображения конца строки
-" precedes - индикатор продолжения строки в лево
-" extends - индикатор продолжения строки в право
-set listchars=tab:>·,trail:·,eol:¬,precedes:«,extends:»
-" Настраиваем отображение символа переноса строки, при включении переноса
-" строки
-" set showbreak=…
+" РќР°СЃС‚СЂР°РёРІР°РµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃРєСЂС‹С‚С‹С… СЃРёРјРІРѕР»РѕРІ, РїСЂРё РІРєР»СЋС‡РµРЅРёРё РёС… РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ:
+" tab - РґРІР° СЃРёРјРІРѕР»Р° РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚Р°Р±СѓР»СЏС†РёРё (РїРµСЂРІС‹Р№ СЃРёРјРІРѕР» Рё Р·Р°РїРѕР»РЅРёС‚РµР»СЊ)
+" eol - СЃРёРјРІРѕР» РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєРѕРЅС†Р° СЃС‚СЂРѕРєРё
+" precedes - РёРЅРґРёРєР°С‚РѕСЂ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ СЃС‚СЂРѕРєРё РІ Р»РµРІРѕ
+" extends - РёРЅРґРёРєР°С‚РѕСЂ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ СЃС‚СЂРѕРєРё РІ РїСЂР°РІРѕ
+set listchars=tab:>В·,trail:В·,eol:В¬,precedes:В«,extends:В»
+" РќР°СЃС‚СЂР°РёРІР°РµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРёРјРІРѕР»Р° РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРєРё, РїСЂРё РІРєР»СЋС‡РµРЅРёРё РїРµСЂРµРЅРѕСЃР°
+" СЃС‚СЂРѕРєРё
+" set showbreak=вЂ¦
 
-" Формат файлов 
+" Р¤РѕСЂРјР°С‚ С„Р°Р№Р»РѕРІ
 set fileformats=dos,unix
-" Кодировки файлов
+" РљРѕРґРёСЂРѕРІРєРё С„Р°Р№Р»РѕРІ
 set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
-" Включаем запись backup'ов
+" Р’РєР»СЋС‡Р°РµРј Р·Р°РїРёСЃСЊ backup'РѕРІ
 set backup writebackup
 
 " EditorConfig
@@ -58,46 +58,46 @@ if has("win32")
 	let g:EditorConfig_core_mode = 'external_command'
 endif
 
-" Каталоги бэкапов для unix и windows {{{1
+" РљР°С‚Р°Р»РѕРіРё Р±СЌРєР°РїРѕРІ РґР»СЏ unix Рё windows {{{1
 au BufWritePre * let &bex = '-' . strftime("%Y%m%d-%H%M%S") . '.vimbackup'
 if has("unix")
-	" Указываем каталог для backup'ов
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ backup'РѕРІ
 	set backupdir=$HOME/.vim/backup
-	" Указываем каталог для swap файла
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ swap С„Р°Р№Р»Р°
 	set directory=$HOME/.vim/swap
-	" Указываем каталог для undo файла
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ undo С„Р°Р№Р»Р°
 	set udir=$HOME/.vim/undo
 
 endif
 if has("win32")
-	" Указываем каталог для backup'ов
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ backup'РѕРІ
 	set backupdir=~/vimfiles/backup//
-	" Указываем каталог для swap файла
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ swap С„Р°Р№Р»Р°
 	set directory=~/vimfiles/swap//
-	" Указываем каталог для undo файлов
+	" РЈРєР°Р·С‹РІР°РµРј РєР°С‚Р°Р»РѕРі РґР»СЏ undo С„Р°Р№Р»РѕРІ
 	set udir==~/vimfiles/undo//
 endif
 
-" Функции специфические для GUI {{{1
+" Р¤СѓРЅРєС†РёРё СЃРїРµС†РёС„РёС‡РµСЃРєРёРµ РґР»СЏ GUI {{{1
 if has("gui_running")
 	"set guioptions=mlrbT
-	" Включаем отображение:
+	" Р’РєР»СЋС‡Р°РµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ:
 	" m - (m)enu bar
 	" r - (r)ight-hand scrollbar
 	" b - (b)ottom scrollbar
 	" T - (T)oolbar
 	set guioptions=mrb
 	set t_Co=256
-	" Отображаем ruler
+	" РћС‚РѕР±СЂР°Р¶Р°РµРј ruler
 	colorscheme mustang
 	if has("gui_win32")
-		"Устанавливаем шрифт и его размер
+		"РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С€СЂРёС„С‚ Рё РµРіРѕ СЂР°Р·РјРµСЂ
 		"set gfn=Courier_New_Cyr:h10:cRUSSIAN
 		set gfn=DejaVu_Sans_Mono:h10:cRUSSIAN
 		"set gfn=Cascadia_Code_PL:h10:cRUSSIAN
 		"set gfn=Consolas:h9:cRUSSIAN
 	endif
-	else " Функции спецические для консоли
+	else " Р¤СѓРЅРєС†РёРё СЃРїРµС†РёС‡РµСЃРєРёРµ РґР»СЏ РєРѕРЅСЃРѕР»Рё
 	colorscheme minimalist
 endif
 
@@ -114,14 +114,14 @@ function! Chtml()
 	let s:count = line("$")
 	for n in range (1, s:count)
 		let s:str = getline(n)
-		let s:str = substitute (s:str, "\&", '\&amp;', "g")	
-		let s:str = substitute (s:str, "\\(\\s\\)\\(--\\)\\(\\s\\)","\\1\\&mdash;\\3", "g")	
+		let s:str = substitute (s:str, "\&", '\&amp;', "g")
+		let s:str = substitute (s:str, "\\(\\s\\)\\(--\\)\\(\\s\\)","\\1\\&mdash;\\3", "g")
 		let s:str = substitute (s:str, "\"", '\&quot;', "g")
-		let s:str = substitute (s:str, "«", '\&laquo;', "g")
-		let s:str = substitute (s:str, "»", '\&raquo;', "g")
-		let s:str = substitute (s:str, "“", '\&ldquo;;', "g")
-		let s:str = substitute (s:str, "”", '\&rdquo;', "g")
-		let s:str = substitute (s:str, "„", '\&bdquo;', "g")
+		let s:str = substitute (s:str, "В«", '\&laquo;', "g")
+		let s:str = substitute (s:str, "В»", '\&raquo;', "g")
+		let s:str = substitute (s:str, "вЂњ", '\&ldquo;;', "g")
+		let s:str = substitute (s:str, "вЂќ", '\&rdquo;', "g")
+		let s:str = substitute (s:str, "вЂћ", '\&bdquo;', "g")
 		let s:str = substitute (s:str, "<", '\&lt;', "g")
 		let s:str = substitute (s:str, ">", '\&gt;', "g")
 		call setline(n,s:str)
@@ -134,9 +134,9 @@ let xml_tag_completion_map = "<C-l>"
 " Wrap function {{{1
 command! -nargs=* Wrap call Wrap()
 function! Wrap()
-	" Перенос слов
+	" РџРµСЂРµРЅРѕСЃ СЃР»РѕРІ
 	set wrap!
-	" Перенос по словам
+	" РџРµСЂРµРЅРѕСЃ РїРѕ СЃР»РѕРІР°Рј
 	set linebreak!
 endfunction
 
@@ -156,7 +156,7 @@ function! Stab()
 	endif
 	call SummarizeTabs()
 endfunction
- 
+
 function! SummarizeTabs()
 	try
 		echohl ModeMsg
