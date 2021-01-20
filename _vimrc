@@ -1,8 +1,22 @@
 " vim600:foldmethod=marker
+"
+" Install vim-plug
+" - Windows PowerShell:
+" iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim ni $HOME/vimfiles/autoload/plug.vim -Force
+" - Unix: 
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
+
+call plug#begin('~/vimfiles/plugged')
+	Plug 'dikiaap/minimalist'
+	Plug 'preservim/nerdtree'
+	Plug 'croaker/mustang-vim'
+	Plug 'itchyny/lightline.vim'
+call plug#end()
 
 set statusline=%t\ %y%m%r[%{&fileencoding}]%<[%{strftime(\"%d.%m.%y\",getftime(expand(\"%:p\")))}]%k%=%-14.(%l,%c%V%)\ %P
 
 set laststatus=2
+let python_highlight_all=1
 
 " Шифруем используя Blowfish
 set cm=blowfish
@@ -15,8 +29,12 @@ set title
 " Включаем автоотступы
 set ai
 set si
-" Включаем нумерацию строк
-set nu
+" Включаем нумерацию строк :set numbers
+set nu		
+" Включаем относительную нумерацию строк :set relativenumber
+set rnu		
+" Включаем рулер
+set ru
 " Настраиваем отображения скрытых символов, при включении их отображения:
 " tab - два символа для отображения табуляции (первый символ и заполнитель)
 " eol - символ для отображения конца строки
@@ -25,7 +43,7 @@ set nu
 set listchars=tab:>·,trail:·,eol:¬,precedes:«,extends:»
 " Настраиваем отображение символа переноса строки, при включении переноса
 " строки
-set showbreak=…
+" set showbreak=…
 
 " Формат файлов 
 set fileformats=dos,unix
@@ -33,6 +51,12 @@ set fileformats=dos,unix
 set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
 " Включаем запись backup'ов
 set backup writebackup
+
+" EditorConfig
+if has("win32")
+	let g:EditorConfig_exec_path = 'c:\ProgramData\chocolatey\bin\editorconfig.exe'
+	let g:EditorConfig_core_mode = 'external_command'
+endif
 
 " Каталоги бэкапов для unix и windows {{{1
 au BufWritePre * let &bex = '-' . strftime("%Y%m%d-%H%M%S") . '.vimbackup'
@@ -43,8 +67,8 @@ if has("unix")
 	set directory=$HOME/.vim/swap
 	" Указываем каталог для undo файла
 	set udir=$HOME/.vim/undo
-endif
 
+endif
 if has("win32")
 	" Указываем каталог для backup'ов
 	set backupdir=~/vimfiles/backup//
@@ -63,22 +87,26 @@ if has("gui_running")
 	" b - (b)ottom scrollbar
 	" T - (T)oolbar
 	set guioptions=mrb
+	set t_Co=256
 	" Отображаем ruler
-	set ru
 	colorscheme mustang
 	if has("gui_win32")
 		"Устанавливаем шрифт и его размер
 		"set gfn=Courier_New_Cyr:h10:cRUSSIAN
 		set gfn=DejaVu_Sans_Mono:h10:cRUSSIAN
+		"set gfn=Cascadia_Code_PL:h10:cRUSSIAN
 		"set gfn=Consolas:h9:cRUSSIAN
 	endif
 	else " Функции спецические для консоли
-	colorscheme default
+	colorscheme minimalist
 endif
+
 
 :filetype plugin on
 
 :filetype indent on
+
+" Plugins
 
 " Clean html function {{{1
 command! -nargs=* Chtml call Chtml()
@@ -149,7 +177,7 @@ endfunction
 if has("autocmd")
 	"Enable file type detection
 	filetype on
-	autocmd FileType php setlocal ts=4 sts=4 sw=4 noet
+	autocmd FileType php setlocal ts=4 sts=4 sw=4 et
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 et
 	autocmd FileType lisp setlocal ts=4 sts=4 sw=4 et
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
@@ -170,14 +198,21 @@ if has("autocmd")
 	autocmd FileType vim setlocal ts=4 sts=4 sw=4 noet
 	autocmd FileType apache setlocal ts=2 sts=2 sw=2 noet
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 et
+	autocmd Filetype json setlocal ts=4 sts=4 sw=4 et
+	autocmd FileType gitconfig setlocal ts=2 sts=2 sw=2 et
+
 	" Treat .rss file as XML
 	autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
-	" Treat .phps file as php
-	autocmd BufNewFile,BufRead *.phps set filetype=php
 	" .scss file
 	autocmd BufNewFile,BufRead *.scss set filetype=scss
 	" .sass file
 	autocmd BufNewFile,BufRead *.sass set filetype=sass
+	" .gitconfig
+	autocmd BufNewFile,BufRead .gitconfig set filetype=gitconfig
+
+	autocmd BufNewFile,BufRead *.json set filetype=json
+	autocmd BufNewFile,BufRead *.yaml set filetype=yaml
+
 endif
 
 " Auto set compiler "{{{1
@@ -197,7 +232,7 @@ menu Encoding.windows-1251 :e ++enc=cp1251<CR>
 menu Encoding.dos :e ++enc=ibm866<CR>
 menu Encoding.utf-8 :e ++enc=utf-8 <CR>
 menu Encoding.utf-16le :e ++enc=utf-16le <CR>
-map <F8> :emenu Encoding.<TAB>
+map <F9> :emenu Encoding.<TAB>
 
 " Map keys {{{1
 imap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
@@ -254,3 +289,9 @@ function! MyDiff()
 	endif
 	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+" NERDTree config {{{1
+let NERDTreeShowHidden=1
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <F7> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
