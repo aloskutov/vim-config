@@ -33,9 +33,9 @@ set title
 set ai
 set si
 " Включаем нумерацию строк :set numbers
-set nu		
+set nu
 " Включаем относительную нумерацию строк :set relativenumber
-set rnu		
+set rnu
 " Включаем рулер
 set ru
 " Настраиваем отображения скрытых символов, при включении их отображения:
@@ -48,7 +48,7 @@ set listchars=tab:>·,trail:·,eol:¬,precedes:«,extends:»
 " строки
 " set showbreak=…
 
-" Формат файлов 
+" Формат файлов
 set fileformats=dos,unix
 " Кодировки файлов
 set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
