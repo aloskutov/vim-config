@@ -24,6 +24,18 @@ curl -O https://raw.githubusercontent.com/aloskutov/vim/master/.vimrc
 
 После строки ```call plug#begin('~/.vim/plugged')``` прописаны устанавливаемые плагины.
 
+```vim
+" Declare the list of plugins.
+Plug 'dikiaap/minimalist'
+Plug 'junegunn/seoul256.vim'
+Plug 'croaker/mustang-vim'
+Plug 'mattn/emmet-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdtree'
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+```
+
 ## Minimalist ##
 Тёмная цветовая схема [minimalist]. Мне понравилась, сижу под ней в консоле. Больше добавить нечего, можно сидеть на стандартных, можно добавить свою. Скачивать множество цветовых схем смысла нет, ибо многие дублируются или только под GUI. А используется обычно одна схема, которую включил и забыл.
 
@@ -67,7 +79,7 @@ autocmd FileType html,css EmmetInstall
 ```
 Более подробная информация есть в документации к плагину.
 
-## Lignhline ##
+## Lightline ##
 
 Лёгкий и конфигурируемый плагин [lightline] для управления строкой статуса. Настройки довольно гибкие, но мне хватает дефолтных.
 
