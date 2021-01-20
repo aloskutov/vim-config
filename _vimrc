@@ -8,6 +8,7 @@
 
 call plug#begin('~/vimfiles/plugged')
 	Plug 'dikiaap/minimalist'
+    Plug 'mattn/emmet-vim'
 	Plug 'preservim/nerdtree'
 	Plug 'croaker/mustang-vim'
 	Plug 'itchyny/lightline.vim'
