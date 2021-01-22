@@ -3,14 +3,13 @@ if empty(glob("~/.vim/autoload/plug.vim"))
 endif
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
-
 " Declare the list of plugins.
-Plug 'dikiaap/minimalist'
-Plug 'junegunn/seoul256.vim'
-Plug 'croaker/mustang-vim'
-Plug 'mattn/emmet-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'preservim/nerdtree'
+    Plug 'dikiaap/minimalist'
+    Plug 'junegunn/seoul256.vim'
+    Plug 'croaker/mustang-vim'
+    Plug 'mattn/emmet-vim'
+    Plug 'itchyny/lightline.vim'
+    Plug 'preservim/nerdtree'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -23,6 +22,10 @@ let python_highlight_all=1
 
 " Шифруем используя Blowfish
 set cm=blowfish
+
+scriptencoding utf-8
+
+set encoding=utf-8
 
 set nocompatible
 " Отключаем перенос строк

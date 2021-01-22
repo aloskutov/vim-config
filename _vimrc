@@ -6,12 +6,16 @@
 " - Unix:
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-call plug#begin('~/vimfiles/plugged')
-	Plug 'dikiaap/minimalist'
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+" Declare the list of plugins.
+    Plug 'dikiaap/minimalist'
+    Plug 'junegunn/seoul256.vim'
+    Plug 'croaker/mustang-vim'
     Plug 'mattn/emmet-vim'
-	Plug 'preservim/nerdtree'
-	Plug 'croaker/mustang-vim'
-	Plug 'itchyny/lightline.vim'
+    Plug 'itchyny/lightline.vim'
+    Plug 'preservim/nerdtree'
+" List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 set statusline=%t\ %y%m%r[%{&fileencoding}]%<[%{strftime(\"%d.%m.%y\",getftime(expand(\"%:p\")))}]%k%=%-14.(%l,%c%V%)\ %P
@@ -26,7 +30,6 @@ scriptencoding utf-8
 
 set encoding=utf-8
 
-set nocompatible
 " Отключаем перенос строк
 set wrap
 " Включаем вывод в заголовке окна имя редактируемого файла
@@ -255,7 +258,8 @@ nmap <leader>m :tabedit $MYVIMRC<CR>
 nmap <leader>w :set wrap!<CR>
 " \z - set Zend Coding Standards & retab
 nmap <leader>z :set ts=4 sw=4 et<CR>:retab<CR>:set ff=unix<CR>
-" Other {{{1
+
+" Для нормальной работы под windows (выделение/копирование/вставка и т.д.) {{{1
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
@@ -286,6 +290,7 @@ function! MyDiff()
 	endif
 	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+
 " NERDTree config {{{1
 let NERDTreeShowHidden=1
 nnoremap <leader>n :NERDTreeFocus<CR>
