@@ -22,6 +22,10 @@ let python_highlight_all=1
 " Шифруем используя Blowfish
 set cm=blowfish
 
+scriptencoding utf-8
+
+set encoding=utf-8
+
 set nocompatible
 " Отключаем перенос строк
 set wrap
@@ -200,19 +204,11 @@ if has("autocmd")
 	autocmd FileType apache setlocal ts=2 sts=2 sw=2 noet
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 et
 	autocmd Filetype json setlocal ts=4 sts=4 sw=4 et
-	autocmd FileType gitconfig setlocal ts=2 sts=2 sw=2 et
+	autocmd FileType git setlocal ts=2 sts=2 sw=2 et
 
 	" Treat .rss file as XML
 	autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
-	" .scss file
-	autocmd BufNewFile,BufRead *.scss set filetype=scss
-	" .sass file
-	autocmd BufNewFile,BufRead *.sass set filetype=sass
-	" .gitconfig
-	autocmd BufNewFile,BufRead .gitconfig set filetype=gitconfig
-
-	autocmd BufNewFile,BufRead *.json set filetype=json
-	autocmd BufNewFile,BufRead *.yaml set filetype=yaml
+	autocmd BufNewFile,BufRead .gitconfig,.gitignore set filetype=git
 
 endif
 

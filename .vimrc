@@ -81,14 +81,10 @@ if has("autocmd")
 	autocmd FileType apache setlocal ts=2 sts=2 sw=2 noet
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 et
 	autocmd Filetype json setlocal ts=4 sts=4 sw=4 et
-	autocmd FileType gitconfig setlocal ts=2 sts=2 sw=2 et
+	autocmd FileType git setlocal ts=2 sts=2 sw=2 et
 
 	autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
-	autocmd BufNewFile,BufRead *.scss set filetype=scss
-	autocmd BufNewFile,BufRead *.sass set filetype=sass
-	autocmd BufNewFile,BufRead .gitconfig set filetype=gitconfig
-	autocmd BufNewFile,BufRead *.json set filetype=json
-	autocmd BufNewFile,BufRead *.yaml set filetype=yaml
+	autocmd BufNewFile,BufRead .gitconfig,.gitignore set filetype=git
 endif
 
 " Map keys {{{1
