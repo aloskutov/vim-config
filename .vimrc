@@ -1,3 +1,7 @@
+" vim600: foldmethod=marker
+scriptencoding utf-8
+set encoding=utf-8
+
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
@@ -23,35 +27,40 @@ let python_highlight_all=1
 " Шифруем используя Blowfish
 set cm=blowfish
 
-scriptencoding utf-8
-
-set encoding=utf-8
-
 set nocompatible
 " Отключаем перенос строк
+
 set wrap
 " Включаем вывод в заголовке окна имя редактируемого файла
+
 set title
+
 " Включаем автоотступы
 set ai
 set si
+
 " Включаем нумерацию строк :set numbers
 set nu
+
 " Включаем относительную нумерацию строк :set relativenumber
 set rnu
+
 " Включаем рулер
 set ru
+
 " Настраиваем отображения скрытых символов, при включении их отображения:
 " tab - два символа для отображения табуляции (первый символ и заполнитель)
 " eol - символ для отображения конца строки
 " precedes - индикатор продолжения строки в лево
 " extends - индикатор продолжения строки в право
-set listchars=tab:▸·,trail:·,eol:↲,precedes:«,extends:»
+set listchars=tab:▸·,trail:·,space:·,eol:↲,precedes:«,extends:»
+
 " Настраиваем отображение символа переноса строки, при включении переноса строки
-set showbreak=…
+" set showbreak=…
 
 " Формат файлов
 set fileformats=dos,unix
+
 " Кодировки файлов
 set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
 
