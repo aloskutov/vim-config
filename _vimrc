@@ -48,10 +48,9 @@ set ru
 " eol - символ для отображения конца строки
 " precedes - индикатор продолжения строки в лево
 " extends - индикатор продолжения строки в право
-set listchars=tab:>·,trail:·,eol:¬,precedes:«,extends:»
-" Настраиваем отображение символа переноса строки, при включении переноса
-" строки
-" set showbreak=…
+set listchars=tab:▸·,trail:·,eol:↲,precedes:«,extends:»
+" Настраиваем отображение символа переноса строки, при включении переноса строки
+set showbreak=…
 
 " Формат файлов
 set fileformats=dos,unix
