@@ -66,36 +66,36 @@ set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
 
 " .vimrc on the fly {{{1
 if has("autocmd")
-	autocmd bufwritepost .vimrc,_vimrc source $MYVIMRC
+    autocmd bufwritepost .vimrc,_vimrc source $MYVIMRC
 endif
 
 " Auto whitespace" {{{1
 if has("autocmd")
-	"Enable file type detection
-	filetype on
-	autocmd FileType php setlocal ts=4 sts=4 sw=4 et
-	autocmd FileType python setlocal ts=4 sts=4 sw=4 et
-	autocmd FileType lisp setlocal ts=4 sts=4 sw=4 et
-	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
-	autocmd FileType ruby setlocal ts=4 sts=4 sw =4 noet
-	autocmd FileType html setlocal ts=4 sts=4 sw=4 noet
-	autocmd FileType xhtml setlocal ts=4 sts=4 sw=4 noet
-	autocmd FileType ant setlocal ts=4 sts=4 sw=4 noet
-	autocmd FileType xml setlocal ts=2 sts=2 sw=2 noet
-	autocmd FileType css setlocal ts=2 sts=2 sw=2 noet
-	autocmd FileType sass setlocal ts=2 sts=2 sw=2 noet
-	autocmd FileType scss setlocal ts=2 sts=2 sw=2 noet
-	autocmd FileType crontab setlocal ts=8 sts=8 sw=8 noet
-	autocmd FileType fstab setlocal ts=8 sts=8 sw=8 noet
-	autocmd FileType make setlocal ts=8 sts=8 sw=8 noet
-	autocmd FileType vim setlocal ts=4 sts=4 sw=4 noet
-	autocmd FileType apache setlocal ts=2 sts=2 sw=2 noet
-	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 et
-	autocmd Filetype json setlocal ts=4 sts=4 sw=4 et
-	autocmd FileType git setlocal ts=2 sts=2 sw=2 et
+"Enable file type detection
+    filetype on
+    autocmd FileType php setlocal ts=4 sts=4 sw=4 et
+    autocmd FileType python setlocal ts=4 sts=4 sw=4 et
+    autocmd FileType lisp setlocal ts=4 sts=4 sw=4 et
+    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
+    autocmd FileType ruby setlocal ts=4 sts=4 sw =4 noet
+    autocmd FileType html setlocal ts=4 sts=4 sw=4 noet
+    autocmd FileType xhtml setlocal ts=4 sts=4 sw=4 noet
+    autocmd FileType ant setlocal ts=4 sts=4 sw=4 noet
+    autocmd FileType xml setlocal ts=2 sts=2 sw=2 noet
+    autocmd FileType css setlocal ts=2 sts=2 sw=2 noet
+    autocmd FileType sass setlocal ts=2 sts=2 sw=2 noet
+    autocmd FileType scss setlocal ts=2 sts=2 sw=2 noet
+    autocmd FileType crontab setlocal ts=8 sts=8 sw=8 noet
+    autocmd FileType fstab setlocal ts=8 sts=8 sw=8 noet
+    autocmd FileType make setlocal ts=8 sts=8 sw=8 noet
+    autocmd FileType vim setlocal ts=4 sts=4 sw=4 et
+    autocmd FileType apache setlocal ts=2 sts=2 sw=2 noet
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 et
+    autocmd Filetype json setlocal ts=4 sts=4 sw=4 et
+    autocmd FileType git setlocal ts=2 sts=2 sw=2 et
 
-	autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
-	autocmd BufNewFile,BufRead .gitconfig,.gitignore set filetype=git
+    autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
+    autocmd BufNewFile,BufRead .gitconfig,.gitignore set filetype=git
 endif
 
 " Map keys {{{1
