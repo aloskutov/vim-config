@@ -11,11 +11,15 @@ set encoding=utf-8
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
-    Plug 'dikiaap/minimalist'
+" {{ Themes }}
+	Plug 'dikiaap/minimalist'
     Plug 'junegunn/seoul256.vim'
     Plug 'croaker/mustang-vim'
+" {{ Interface }}	
+    Plug 'itchyny/lightline.vim'	
+" {{ Web-dev }}	
     Plug 'mattn/emmet-vim'
-    Plug 'itchyny/lightline.vim'
+" {{ File management }} 	
     Plug 'preservim/nerdtree'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
