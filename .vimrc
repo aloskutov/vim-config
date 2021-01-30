@@ -69,6 +69,9 @@ set fileformats=dos,unix
 " Кодировки файлов
 set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
 
+" Remove trailing whitespace on save {{{1
+ autocmd BufWritePre * :%s/\s\+$//e
+
 " .vimrc on the fly {{{1
 if has("autocmd")
     autocmd bufwritepost .vimrc,_vimrc source $MYVIMRC
@@ -128,7 +131,6 @@ nmap <leader>m :tabedit $MYVIMRC<CR>
 nmap <leader>w :set wrap!<CR>
 " \z - set Zend Coding Standards & retab
 nmap <leader>z :set ts=4 sw=4 et<CR>:retab<CR>:set ff=unix<CR>
-
 
 " NERDTree config {{{1
 let NERDTreeShowHidden=1
