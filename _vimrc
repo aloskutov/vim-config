@@ -20,6 +20,8 @@ call plug#begin('~/vimfiles/plugged')
     Plug 'frazrepo/vim-rainbow'
 " Web-dev
     Plug 'mattn/emmet-vim'
+    Plug 'bpearson/vim-phpcs'
+    Plug 'editorconfig/editorconfig-vim'
 " File management
     Plug 'preservim/nerdtree'
 " List ends here. Plugins become visible to Vim after this call.
@@ -59,36 +61,34 @@ set listchars=tab:▸·,trail:·,space:·,eol:↲,precedes:«,extends:»
 " set showbreak=…
 
 " File settings
-set fileformats=dos,unix    " Формат файлов
+set fileformats=dos,unix                                        " Формат файлов
 set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866    " Кодировки файлов
 
-" EditorConfig
-if has("win32")
+" EditorConfig options {{{1
+" (choco install editorconfig.core)
+if exists("g:loaded_EditorConfig") && has("win32")
     let g:EditorConfig_exec_path = 'c:\ProgramData\chocolatey\bin\editorconfig.exe'
     let g:EditorConfig_core_mode = 'external_command'
 endif
 
-" Включаем запись backup'ов
-set backup writebackup
+" vim-phpcs options {{{1
+if exists('g:loaded_Vimphpcs')
+    let g:Vimphpcs_Standard = 'PSR12'
+    let g:Vimphpcs_ExtraArgs= '-q'
+endif
 
 " Каталоги бэкапов для unix и windows {{{1
+set backup writebackup  " Включаем запись backup'ов
 au BufWritePre * let &bex = '-' . strftime("%Y%m%d-%H%M%S") . '.vimbackup'
 if has("unix")
-    " Указываем каталог для backup'ов
-    set backupdir=$HOME/.vim/backup
-    " Указываем каталог для swap файла
-    set directory=$HOME/.vim/swap
-    " Указываем каталог для undo файла
-    set udir=$HOME/.vim/undo
-
+    set backupdir=$HOME/.vim/backup     " Указываем каталог для backup'ов
+    set directory=$HOME/.vim/swap       " Указываем каталог для swap файла
+    set udir=$HOME/.vim/undo            " Указываем каталог для undo файла
 endif
 if has("win32")
-    " Указываем каталог для backup'ов
-    set backupdir=~/vimfiles/backup//
-    " Указываем каталог для swap файла
-    set directory=~/vimfiles/swap//
-    " Указываем каталог для undo файлов
-    set udir==~/vimfiles/undo//
+    set backupdir=~/vimfiles/backup//   " указываем каталог для backup'ов
+    set directory=~/vimfiles/swap//     " указываем каталог для swap файла
+    set udir==~/vimfiles/undo//         " указываем каталог для undo файлов
 endif
 
 " Поддержка 2556 цветов
@@ -103,7 +103,6 @@ if has("gui_running")
     " b - (b)ottom scrollbar
     " T - (T)oolbar
     set guioptions=mrb
-    " Отображаем ruler
     colorscheme mustang
     if has("gui_win32")
         "Устанавливаем шрифт и его размер
@@ -113,7 +112,7 @@ if has("gui_running")
         "set gfn=Consolas:h9:cRUSSIAN
     endif
     else " Функции спецические для консоли
-    colorscheme minimalist
+        colorscheme minimalist
 endif
 
 :filetype plugin on
