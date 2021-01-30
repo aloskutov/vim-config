@@ -67,14 +67,15 @@ set fileformats=dos,unix
 " Кодировки файлов
 set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
 
-" Включаем запись backup'ов
-set backup writebackup
-
 " EditorConfig
 if has("win32")
     let g:EditorConfig_exec_path = 'c:\ProgramData\chocolatey\bin\editorconfig.exe'
     let g:EditorConfig_core_mode = 'external_command'
 endif
+
+
+" Включаем запись backup'ов
+set backup writebackup
 
 " Каталоги бэкапов для unix и windows {{{1
 au BufWritePre * let &bex = '-' . strftime("%Y%m%d-%H%M%S") . '.vimbackup'
@@ -126,26 +127,6 @@ endif
 
 " Plugins
 
-" Clean html function {{{1
-command! -nargs=* Chtml call Chtml()
-function! Chtml()
-    let s:count = line("$")
-    for n in range (1, s:count)
-        let s:str = getline(n)
-        let s:str = substitute (s:str, "\&", '\&amp;', "g")
-        let s:str = substitute (s:str, "\\(\\s\\)\\(--\\)\\(\\s\\)","\\1\\&mdash;\\3", "g")
-        let s:str = substitute (s:str, "\"", '\&quot;', "g")
-        let s:str = substitute (s:str, "«", '\&laquo;', "g")
-        let s:str = substitute (s:str, "»", '\&raquo;', "g")
-        let s:str = substitute (s:str, "“", '\&ldquo;;', "g")
-        let s:str = substitute (s:str, "”", '\&rdquo;', "g")
-        let s:str = substitute (s:str, "„", '\&bdquo;', "g")
-        let s:str = substitute (s:str, "<", '\&lt;', "g")
-        let s:str = substitute (s:str, ">", '\&gt;', "g")
-        call setline(n,s:str)
-    endfor
-endfunction
-
 " xml-plugin config {{{1
 let xml_tag_completion_map = "<C-l>"
 
@@ -193,14 +174,13 @@ endfunction
 
 " Auto whitespace" {{{1
 if has("autocmd")
-    "Enable file type detection
+"Enable file type detection
     filetype on
     autocmd FileType php setlocal ts=4 sts=4 sw=4 et
     autocmd FileType python setlocal ts=4 sts=4 sw=4 et
     autocmd FileType lisp setlocal ts=4 sts=4 sw=4 et
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noet
     autocmd FileType ruby setlocal ts=4 sts=4 sw =4 noet
-
     autocmd FileType html setlocal ts=4 sts=4 sw=4 noet
     autocmd FileType xhtml setlocal ts=4 sts=4 sw=4 noet
     autocmd FileType ant setlocal ts=4 sts=4 sw=4 noet
@@ -208,30 +188,17 @@ if has("autocmd")
     autocmd FileType css setlocal ts=2 sts=2 sw=2 noet
     autocmd FileType sass setlocal ts=2 sts=2 sw=2 noet
     autocmd FileType scss setlocal ts=2 sts=2 sw=2 noet
-
     autocmd FileType crontab setlocal ts=8 sts=8 sw=8 noet
     autocmd FileType fstab setlocal ts=8 sts=8 sw=8 noet
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noet
-
     autocmd FileType vim setlocal ts=4 sts=4 sw=4 et
-    autocmd FileType apache setlocal ts=2 sts=2 sw=2 et
+    autocmd FileType apache setlocal ts=2 sts=2 sw=2 noet
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 et
     autocmd Filetype json setlocal ts=4 sts=4 sw=4 et
     autocmd FileType git setlocal ts=2 sts=2 sw=2 et
 
-    " Treat .rss file as XML
     autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
     autocmd BufNewFile,BufRead .gitconfig,.gitignore set filetype=git
-
-endif
-
-" Auto set compiler "{{{1
-if has("autocmd")
-    filetype on
-    autocmd FileType html compiler tidy
-    autocmd FileType xhtml compiler tidy
-    autocmd FileType css compiler tidy
-    autocmd FileType php compiler php
 endif
 
 " Menu Encoding {{{1
@@ -245,7 +212,6 @@ menu Encoding.utf-16le :e ++enc=utf-16le <CR>
 map <F9> :emenu Encoding.<TAB>
 
 " Map keys {{{1
-imap <C-o> :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
 " F2 - Save
 nmap <F2> :w<cr>
 vmap <F2> <esc>:w<cr>i

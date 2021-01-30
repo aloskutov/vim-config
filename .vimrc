@@ -5,14 +5,19 @@ set encoding=utf-8
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
+" Themes
     Plug 'dikiaap/minimalist'
     Plug 'junegunn/seoul256.vim'
     Plug 'croaker/mustang-vim'
-    Plug 'mattn/emmet-vim'
+" Interface
     Plug 'itchyny/lightline.vim'
+" Web-dev
+    Plug 'mattn/emmet-vim'
+" File management
     Plug 'preservim/nerdtree'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -28,11 +33,11 @@ let python_highlight_all=1
 set cm=blowfish
 
 set nocompatible
+
 " Отключаем перенос строк
-
 set wrap
-" Включаем вывод в заголовке окна имя редактируемого файла
 
+" Включаем вывод в заголовке окна имя редактируемого файла
 set title
 
 " Включаем автоотступы
@@ -98,6 +103,16 @@ if has("autocmd")
     autocmd BufNewFile,BufRead .gitconfig,.gitignore set filetype=git
 endif
 
+" Menu Encoding {{{1
+set wildmenu
+set wcm=<TAB>
+menu Encoding.koi8-r :e ++enc=koi8-r<CR>
+menu Encoding.windows-1251 :e ++enc=cp1251<CR>
+menu Encoding.dos :e ++enc=ibm866<CR>
+menu Encoding.utf-8 :e ++enc=utf-8 <CR>
+menu Encoding.utf-16le :e ++enc=utf-16le <CR>
+map <F9> :emenu Encoding.<TAB>
+
 " Map keys {{{1
 " F2 - Save
 nmap <F2> :w<cr>
@@ -114,15 +129,6 @@ nmap <leader>w :set wrap!<CR>
 " \z - set Zend Coding Standards & retab
 nmap <leader>z :set ts=4 sw=4 et<CR>:retab<CR>:set ff=unix<CR>
 
-" Menu Encoding {{{1
-set wildmenu
-set wcm=<TAB>
-menu Encoding.koi8-r :e ++enc=koi8-r<CR>
-menu Encoding.windows-1251 :e ++enc=cp1251<CR>
-menu Encoding.dos :e ++enc=ibm866<CR>
-menu Encoding.utf-8 :e ++enc=utf-8 <CR>
-menu Encoding.utf-16le :e ++enc=utf-16le <CR>
-map <F9> :emenu Encoding.<TAB>
 
 " NERDTree config {{{1
 let NERDTreeShowHidden=1
