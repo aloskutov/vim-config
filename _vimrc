@@ -9,7 +9,7 @@ set encoding=utf-8
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 " Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/vimfiles/plugged')
 " Declare the list of plugins.
 " Themes
     Plug 'dikiaap/minimalist'
