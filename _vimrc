@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'croaker/mustang-vim'
 " Interface
     Plug 'itchyny/lightline.vim'
+    Plug 'frazrepo/vim-rainbow'
 " Web-dev
     Plug 'mattn/emmet-vim'
 " File management
@@ -29,27 +30,23 @@ set statusline=%t\ %y%m%r[%{&fileencoding}]%<[%{strftime(\"%d.%m.%y\",getftime(e
 set laststatus=2
 let python_highlight_all=1
 
-" Шифруем используя Blowfish
-set cm=blowfish
+set cm=blowfish " Шифруем используя Blowfish
 
-" Отключаем перенос строк
-set wrap
+" Visual settings
+set title       " Включаем вывод в заголовке окна имя редактируемого файла
+set nu          " Включаем нумерацию строк :set number
+set rnu         " Включаем относительную нумерацию строк :set relativenumber
+set ru          " Включаем рулер :set ruler
+syntax enable   "Включаем подсветку синтаксиса
 
-" Включаем вывод в заголовке окна имя редактируемого файла
-set title
+" Formatting
+set ai          " Включаем автоотступы :set autoindent
+set si          " :set smartindent
+set wrap        " Отключаем перенос строк
 
-" Включаем автоотступы
-set ai
-set si
-
-" Включаем нумерацию строк :set numbers
-set nu
-
-" Включаем относительную нумерацию строк :set relativenumber
-set rnu
-
-" Включаем рулер
-set ru
+" Mouse settings
+set mousehide   " Прячем курсор при наборе текста
+set mouse=a     " Включаем поддержку мыши
 
 " Настраиваем отображения скрытых символов, при включении их отображения:
 " tab - два символа для отображения табуляции (первый символ и заполнитель)
@@ -61,18 +58,15 @@ set listchars=tab:▸·,trail:·,space:·,eol:↲,precedes:«,extends:»
 " Настраиваем отображение символа переноса строки, при включении переноса строки
 " set showbreak=…
 
-" Формат файлов
-set fileformats=dos,unix
-
-" Кодировки файлов
-set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
+" File settings
+set fileformats=dos,unix    " Формат файлов
+set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866    " Кодировки файлов
 
 " EditorConfig
 if has("win32")
     let g:EditorConfig_exec_path = 'c:\ProgramData\chocolatey\bin\editorconfig.exe'
     let g:EditorConfig_core_mode = 'external_command'
 endif
-
 
 " Включаем запись backup'ов
 set backup writebackup
@@ -97,6 +91,9 @@ if has("win32")
     set udir==~/vimfiles/undo//
 endif
 
+" Поддержка 2556 цветов
+set t_Co=256
+
 " Функции специфические для GUI {{{1
 if has("gui_running")
     "set guioptions=mlrbT
@@ -106,7 +103,6 @@ if has("gui_running")
     " b - (b)ottom scrollbar
     " T - (T)oolbar
     set guioptions=mrb
-    set t_Co=256
     " Отображаем ruler
     colorscheme mustang
     if has("gui_win32")
@@ -120,9 +116,7 @@ if has("gui_running")
     colorscheme minimalist
 endif
 
-
 :filetype plugin on
-
 :filetype indent on
 
 " Plugins
@@ -133,11 +127,12 @@ let xml_tag_completion_map = "<C-l>"
 " Wrap function {{{1
 command! -nargs=* Wrap call Wrap()
 function! Wrap()
-    " Перенос слов
-    set wrap!
-    " Перенос по словам
-    set linebreak!
+    set wrap!       " Перенос слов
+    set linebreak!  " Перенос по словам
 endfunction
+
+" Remove trailing whitespace on save {a{1
+autocmd BufWritePre * :%s/\s\+$//e
 
 " _vimrc on the fly {{{1
 if has("autocmd")
@@ -199,6 +194,15 @@ if has("autocmd")
 
     autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
     autocmd BufNewFile,BufRead .gitconfig,.gitignore set filetype=git
+endif
+
+" Auto set compiler "{{{1
+if has("autocmd")
+    filetype on
+    autocmd FileType html compiler tidy
+    autocmd FileType xhtml compiler tidy
+    autocmd FileType css compiler tidy
+    autocmd FileType php compiler php
 endif
 
 " Menu Encoding {{{1
