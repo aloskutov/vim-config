@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'croaker/mustang-vim'
 " Interface
     Plug 'itchyny/lightline.vim'
+    Plug 'frazrepo/vim-rainbow'
 " Web-dev
     Plug 'mattn/emmet-vim'
 " File management
@@ -29,29 +30,21 @@ set statusline=%t\ %y%m%r[%{&fileencoding}]%<[%{strftime(\"%d.%m.%y\",getftime(e
 set laststatus=2
 let python_highlight_all=1
 
-" Шифруем используя Blowfish
-set cm=blowfish
+set cm=blowfish     " Шифруем используя Blowfish
 
 set nocompatible
 
-" Отключаем перенос строк
-set wrap
+" Visual settings
+set title       " Включаем вывод в заголовке окна имя редактируемого файла
+set nu          " Включаем нумерацию строк :set numbers
+set rnu         " Включаем относительную нумерацию строк :set relativenumber
+set ru          " Включаем рулер :set ruler
+syntax enable   "Включаем подсветку синтаксиса
 
-" Включаем вывод в заголовке окна имя редактируемого файла
-set title
-
-" Включаем автоотступы
-set ai
-set si
-
-" Включаем нумерацию строк :set numbers
-set nu
-
-" Включаем относительную нумерацию строк :set relativenumber
-set rnu
-
-" Включаем рулер
-set ru
+" Formatting
+set ai      " Включаем автоотступы :set autoindent
+set si      " :set smartindent
+set wrap    " Отключаем перенос строк
 
 " Настраиваем отображения скрытых символов, при включении их отображения:
 " tab - два символа для отображения табуляции (первый символ и заполнитель)
@@ -63,11 +56,8 @@ set listchars=tab:▸·,trail:·,space:·,eol:↲,precedes:«,extends:»
 " Настраиваем отображение символа переноса строки, при включении переноса строки
 " set showbreak=…
 
-" Формат файлов
-set fileformats=dos,unix
-
-" Кодировки файлов
-set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866
+set fileformats=dos,unix    " Формат файлов
+set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866    " Кодировки файлов
 
 " Remove trailing whitespace on save {{{1
  autocmd BufWritePre * :%s/\s\+$//e
@@ -88,7 +78,6 @@ if has("autocmd")
     autocmd FileType ruby setlocal ts=4 sts=4 sw =4 noet
     autocmd FileType html setlocal ts=4 sts=4 sw=4 noet
     autocmd FileType xhtml setlocal ts=4 sts=4 sw=4 noet
-    autocmd FileType ant setlocal ts=4 sts=4 sw=4 noet
     autocmd FileType xml setlocal ts=2 sts=2 sw=2 noet
     autocmd FileType css setlocal ts=2 sts=2 sw=2 noet
     autocmd FileType sass setlocal ts=2 sts=2 sw=2 noet
