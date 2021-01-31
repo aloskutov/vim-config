@@ -15,7 +15,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'croaker/mustang-vim'
 " Interface
     Plug 'itchyny/lightline.vim'
-    Plug 'frazrepo/vim-rainbow'
 " Web-dev
     Plug 'mattn/emmet-vim'
 " File management
@@ -39,7 +38,7 @@ set title       " Включаем вывод в заголовке окна и�
 set nu          " Включаем нумерацию строк :set numbers
 set rnu         " Включаем относительную нумерацию строк :set relativenumber
 set ru          " Включаем рулер :set ruler
-syntax enable   "Включаем подсветку синтаксиса
+syntax enable   " Включаем подсветку синтаксиса
 
 " Formatting
 set ai      " Включаем автоотступы :set autoindent
