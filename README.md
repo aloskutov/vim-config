@@ -50,7 +50,8 @@ call plug#end()
 
 -   [vim-phpcs]
 -   [editorconfig-vim]
-    Можно отключить [emmet-vim]
+
+Можно отключить [emmet-vim]
 
 ## Установка
 
