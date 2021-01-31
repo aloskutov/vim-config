@@ -17,7 +17,6 @@ call plug#begin('~/vimfiles/plugged')
     Plug 'croaker/mustang-vim'
 " Interface
     Plug 'itchyny/lightline.vim'
-    Plug 'frazrepo/vim-rainbow'
 " Web-dev
     Plug 'mattn/emmet-vim'
     Plug 'bpearson/vim-phpcs'
@@ -65,10 +64,8 @@ set fileformats=dos,unix                                        " Формат �
 set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866    " Кодировки файлов
 
 " EditorConfig options {{{1
-" (choco install editorconfig.core)
-if exists("g:loaded_EditorConfig") && has("win32")
-    let g:EditorConfig_exec_path = 'c:\ProgramData\chocolatey\bin\editorconfig.exe'
-    let g:EditorConfig_core_mode = 'external_command'
+if exists("g:loaded_EditorConfig")
+    au FileType gitcommit let b:EditorConfig_disable = 1
 endif
 
 " vim-phpcs options {{{1
