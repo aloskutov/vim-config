@@ -93,6 +93,7 @@ if has("autocmd")
 
     autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
     autocmd BufNewFile,BufRead .gitconfig,.gitignore set filetype=git
+    autocmd BufNewFile,BufRead /etc/angie/* set filetype=nginx
 endif
 
 " Menu Encoding {{{1
