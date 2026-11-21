@@ -55,7 +55,7 @@ set listchars=tab:▸·,trail:·,space:·,eol:↲,precedes:«,extends:»
 " Настраиваем отображение символа переноса строки, при включении переноса строки
 " set showbreak=…
 
-set fileformats=dos,unix    " Формат файлов
+set fileformats=unix, dos   " Формат файлов
 set fileencodings=utf-8,ucs-bom,utf-16le,cp1251,koi8-r,cp866    " Кодировки файлов
 
 " Remove trailing whitespace on save {{{1
